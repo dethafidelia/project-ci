@@ -5,233 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIM PROMONEV</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
-        .submit {
-            border: none;
-            border-radius: 30px;
-            font-size: 15px;
-            height: 45px;
-            outline: none;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.7);
-            cursor: pointer;
-            transition: .3s;
-        }
-
-        .submit:hover {
-            box-shadow: 1px 5px 7px rgba(0, 0, 0, 0.2);
-        }
-
-        .buttom {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            font-size: small;
-            color: #fff;
-            margin-top: 10px;
-        }
-
-        .left {
-            display: flex;
-        }
-
-        label a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: black;
-        }
-
-        .bg {
-            background-image: url(bg1.jpg);
+        .bd {
+            background-image: url('<?= base_url('bg1.jpg'); ?>');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center;
             background-attachment: fixed;
-        }
-
-        .box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 90vh;
-        }
-
-        .container {
-            width: 350px;
-            display: flex;
-            flex-direction: column;
-            padding: 0 15px 0 15 px;
-        }
-
-        span {
-            color: #fff;
-            font-size: small;
-            display: flex;
-            justify-content: center;
-            padding: 10px 0 15px 0;
-        }
-
-        header {
-            color: #fff;
-            font-size: 30px;
-            display: flex;
-            justify-content: center;
-            padding: 0 0 15px 0;
-        }
-
-        .input-field {
-            display: flex;
-            flex-direction: column;
-            margin-top: 15px;
-        }
-
-        .input-field .input {
-            height: 45px;
-            width: 87%;
-            border: none;
-            outline: none;
-            border-radius: 30px;
-            color: #fff;
-            padding: 0 0 0 42px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        i {
-            position: relative;
-            top: -31px;
-            left: 17px;
-            color: #fff;
-        }
-
-        ::-webkit-input-placeholder {
-            color: #fff;
-        }
-
-        .navbar {
-            background-color: #ffffff;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .navbar a {
-            display: inline-block;
-            color: rgb(0, 0, 0);
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #ffffff;
-            text-align: center;
-        }
-
-        li {
-            float: left;
-        }
-
-        li a {
-            display: inline-block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        li a:hover:not(.active) {
-            background-color: #111;
-            color: #fff;
-        }
-
-        .active {
-            background-color: #04AA6D;
-        }
-
-        .dropbtn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #3e8e41;
         }
     </style>
 </head>
 
 <body>
-    <div class="navbar">
-        <h2>PAROKI KELUARGA KUDUS BANTENG</h2>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-2 p-3 bg-white text-white text-center">
+            <img src="<?= base_url('logo_login.png') ?>" alt="Paroki Logo" style="height: 100px">
+        </div>
+        <div class="col-sm-10 p-3 bg-white text-center">
+            <h1>PAROKI KELUARGA KUDUS BANTENG</h1>
+        </div>
     </div>
-    <form action="<?= site_url('gereja/check') ?> " method="post">
-        <?= csrf_field() ?>
-        <div class="bg">
-            <div class="box">
-                <div class="container">
-                    <div class="top-header">
-                        <header>LOGIN</header>
-                    </div>
-
-                    <div class="input-field">
-                        <input type="text" class="input" id="usr" name="usr" placeholder="username" required>
-                        <i class="bx bx-user"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" class="input" id="pwd" name="pwd" placeholder="password" required>
-                        <i class="bx bx-lock-alt"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="submit" class="submit" value="LOGIN">
+    <div class="bd">
+        <form action="<?= site_url('gereja/check') ?> " method="post">
+            <?= csrf_field() ?>
+            <div class="container">
+                <div class="row justify-content-center align-items-center min-vh-100">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">LOGIN</h5>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="usr" name="usr" placeholder="Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
+                                </div>
+                                <?php if (session()->getFlashdata('error') != null) : ?>
+                                    <div class="alert" role="alert">
+                                        <?php echo session()->getFlashdata('error'); ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
-
+        </form>
+    </div>
 
 
 

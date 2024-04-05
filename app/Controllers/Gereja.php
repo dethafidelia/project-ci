@@ -32,11 +32,17 @@ class Gereja extends BaseController
         if ($query) {
             if ($post['pwd'] == $query['PASSWORD']) {
                 $_SESSION['usr'] = $post['usr'];
-                return view('gereja/HOME');
+                return view('gereja/header')
+                    . view('gereja/HOME');
+            } else {
+                $session = session();
+                $session->setFlashData('error', 'Password salah');
             }
         }
+        $session = session();
+        $session->setFlashdata('error', 'user tidak ditemukan');
 
-        return view('gereja ');
+        return view('Gereja/login');
     }
 
     public function login()

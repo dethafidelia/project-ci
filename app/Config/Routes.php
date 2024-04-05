@@ -42,9 +42,14 @@ $routes->get('gereja', 'Gereja::index');
 $routes->match(['get', 'post'], 'gereja/check', [Gereja::class, 'check']);
 $routes->get('logout', 'Gereja::logout');
 
+use App\Controllers\Home;
+
+$routes->get('home', 'Home::index');
+
 use App\Controllers\Agenda;
 
 $routes->get('agenda', 'Agenda::index');
+$routes->get('agenda/getAllAgenda', 'Agenda::getAllAgenda');
 
 use App\Controllers\Monev;
 

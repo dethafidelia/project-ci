@@ -91,6 +91,12 @@ i{
     color: #fff;
 }
 
+.navbarlogo {
+  background-color: #ffffff;
+  overflow: hidden;
+  text-align: left;
+}
+
 .navbar {
     background-color: #ffffff;
     overflow: hidden;
