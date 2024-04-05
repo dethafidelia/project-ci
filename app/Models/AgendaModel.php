@@ -9,9 +9,4 @@ class AgendaModel extends Model
     protected $table = 'agenda';
     protected $primaryKey = 'ID';
     protected $allowedFields = ['BIDANG'];
-
-    public function getAllAgenda()
-    {
-        return $this->findC('BIDANG')->getRowArray();
-    }
 }
