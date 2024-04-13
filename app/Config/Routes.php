@@ -59,6 +59,14 @@ use App\Controllers\About;
 
 $routes->get('about', 'About::index');
 
+use App\Controllers\HomeAdmin;
+
+$routes->get('homeAdmin', 'HomeAdmin::index');
+
+use App\Controllers\DPPH;
+
+$routes->get('dpph', 'DPPH::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
