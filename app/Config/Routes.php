@@ -67,6 +67,10 @@ use App\Controllers\DPPH;
 
 $routes->get('dpph', 'DPPH::index');
 
+use App\Controllers\Bidang;
+
+$routes->get('bidang', 'Bidang::index');
+$routes->get('bidang/get-tim-pelayanan/(:num)', 'Bidang::getTimPelayananByBidang/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
