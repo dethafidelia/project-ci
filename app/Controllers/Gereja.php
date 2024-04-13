@@ -25,24 +25,46 @@ class Gereja extends BaseController
         }
     }
 
+    public function admin()
+    {
+        $post = $this->request->getPost(['usr', 'pwd']);
+
+        // Cek apakah username dan password admin sesuai
+        if ($post['usr'] === 'admin' && $post['pwd'] === '123') {
+            return view('gereja/admin')
+                . view('gereja/HOME');
+        } else {
+            $session = session();
+            $session->setFlashdata('error', 'Login gagal. Periksa kembali username dan password Anda.');
+            return redirect()->to('/login');
+        }
+    }
+
+
     public function check()
     {
         $post = $this->request->getPost(['usr', 'pwd']);
-        $query = $this->userModel->getUser($post['usr']);
-        if ($query) {
-            if ($post['pwd'] == $query['PASSWORD']) {
-                $_SESSION['usr'] = $post['usr'];
-                return view('gereja/header')
-                    . view('gereja/HOME');
-            } else {
-                $session = session();
-                $session->setFlashData('error', 'Password salah');
-            }
-        }
-        $session = session();
-        $session->setFlashdata('error', 'user tidak ditemukan');
 
-        return view('Gereja/login');
+        if ($post['usr'] !== 'admin') {
+            $query = $this->userModel->getUser($post['usr']);
+
+            if ($query) {
+                if ($post['pwd'] == $query['PASSWORD']) {
+                    $_SESSION['usr'] = $post['usr'];
+                    return view('gereja/header')
+                        . view('gereja/HOME');
+                } else {
+                    $session = session();
+                    $session->setFlashData('error', 'Login gagal. Periksa kembali username dan password Anda.');
+                }
+            }
+
+            $session = session();
+            $session->setFlashdata('error', 'Login gagal. Periksa kembali username dan password Anda.');
+            return view('Gereja/login');
+        } else {
+            return $this->admin();
+        }
     }
 
     public function login()
