@@ -12,12 +12,6 @@ class Agenda extends BaseController
             . view('gereja/AGENDA');
     }
 
-    public function Agendasbr()
-    {
-        return view('gereja/headerSBR')
-            . view('gereja/AGENDAsbr');
-    }
-
     public function getAllAgenda()
     {
         $model = new AgendaModel();
@@ -25,44 +19,32 @@ class Agenda extends BaseController
         echo json_encode($data);
     }
 
-    // public function insert()
-    // {
-    //     // Load model "programasi"
-    //     $this->load->model('programasi_model');
+    // Metode untuk menangani pengiriman formulir
+    public function submit()
+    {
+        // Ambil data yang dikirimkan dari formulir
+        $data = [
+            'BIDANG' => $this->request->getPost('bidang'),
+            'SASARAN_STRATEGIS' => $this->request->getPost('sasaran_strategis'),
+            'INDIKATOR' => $this->request->getPost('indikator'),
+            'TARGET' => $this->request->getPost('target'),
+            'ASUMSI' => $this->request->getPost('asumsi'),
+            'RESIKO' => $this->request->getPost('resiko'),
+            'KEGIATAN_UTAMA' => $this->request->getPost('kegiatan_utama'),
+            'WAKTU' => $this->request->getPost('waktu'),
+            'TOTAL_BIAYA' => $this->request->getPost('total_biaya'),
+            'DETAIL_BIAYA' => $this->request->getPost('detail_biaya'),
+            'PENANGGUNG_JAWAB' => $this->request->getPost('penanggung_jawab'),
+            'KETERANGAN' => $this->request->getPost('keterangan')
+        ];
 
-    //     // Dapatkan data dari form HTML
-    //     $bidang = $this->input->post('bidang');
-    //     $sasaran_strategis = $this->input->post('sasaran_strategis');
-    //     $indikator = $this->input->post('indikator');
-    //     $target = $this->input->post('target');
-    //     $asumsi = $this->input->post('asumsi');
-    //     $resiko = $this->input->post('resiko');
-    //     $kegiatan_utama = $this->input->post('kegiatan_utama');
-    //     $waktu = $this->input->post('waktu');
-    //     $total_biaya = $this->input->post('total_biaya');
-    //     $detail_biaya = $this->input->post('detail_biaya');
-    //     $penanggung_jawab = $this->input->post('penanggung_jawab');
-    //     $keterangan = $this->input->post('keterangan');
+        // Buat instansi model
+        $model = new AgendaModel();
 
-    //     // Siapkan data untuk diinsert ke tabel "programasi"
-    //     $data = array(
-    //         'sasaran_strategis' => $sasaran_strategis,
-    //         'indikator' => $indikator,
-    //         'target' => $target,
-    //         'asumsi' => $asumsi,
-    //         'resiko' => $resiko,
-    //         'kegiatan_utama' => $kegiatan_utama,
-    //         'waktu' => $waktu,
-    //         'total_biaya' => $total_biaya,
-    //         'detail_biaya' => $detail_biaya,
-    //         'penanggung_jawab' => $penanggung_jawab,
-    //         'keterangan' => $keterangan
-    //     );
+        // Panggil metode tambah dari model untuk menyimpan data ke database
+        $model->tambah($data);
 
-    //     // Insert data ke tabel "programasi"
-    //     $this->programasi_model->insert($data);
-
-    //     // Redirect ke halaman sukses
-    //     redirect('/programasi/success');
-    // }
+        // Redirect kembali ke halaman agenda setelah data tersimpan
+        return redirect()->to(base_url('agenda'));
+    }
 }

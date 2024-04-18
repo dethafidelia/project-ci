@@ -1,4 +1,4 @@
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
+<div id="demo" class="carousel slide" data-bs-ride="carousel" style="overflow: hidden;">
 
     <!-- Indicators/dots -->
     <div class="carousel-indicators">
@@ -10,13 +10,13 @@
     <!-- The slideshow/carousel -->
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="<?php echo base_url(); ?>home1.jpg" class="d-block w-100">
+            <img src="<?php echo base_url(); ?>home1.jpg" class="d-block w-100" style="object-fit: cover; height: 100vh;">
         </div>
         <div class="carousel-item">
-            <img src="<?php echo base_url(); ?>home2.jpg" class="d-block w-100">
+            <img src="<?php echo base_url(); ?>home2.jpg" class="d-block w-100" style="object-fit: cover; height: 100vh;">
         </div>
         <div class="carousel-item">
-            <img src="<?php echo base_url(); ?>home3.jpg" class="d-block w-100">
+            <img src="<?php echo base_url(); ?>home3.jpg" class="d-block w-100" style="object-fit: cover; height: 100vh;">
         </div>
     </div>
 
@@ -28,6 +28,8 @@
         <span class="carousel-control-next-icon"></span>
     </button>
 </div>
+
+
 </body>
 
 </html>

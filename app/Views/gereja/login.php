@@ -8,6 +8,11 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+
         .bd {
             background-image: url('<?= base_url('bg1.jpg'); ?>');
             background-size: cover;
@@ -18,14 +23,18 @@
 </head>
 
 <body>
-    <div class="row justify-content-center align-items-center">
-        <div class="col-sm-2 p-3 bg-white text-white text-center">
-            <img src="<?= base_url('logo_login.png') ?>" alt="Paroki Logo" style="height: 100px">
+    <header>
+        <div class="container-fluid bg-dark py-3">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-sm-2 text-center">
+                    <img src="<?= base_url('logo_login.png') ?>" alt="Paroki Logo" style="height: 100px" class="img-fluid">
+                </div>
+                <div class="col-sm-10 text-center">
+                    <h1 class="text-white">PAROKI KELUARGA KUDUS BANTENG</h1>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-10 p-3 bg-white text-center">
-            <h1>PAROKI KELUARGA KUDUS BANTENG</h1>
-        </div>
-    </div>
+    </header>
     <div class="bd">
         <form action="<?= site_url('gereja/check') ?> " method="post">
             <?= csrf_field() ?>

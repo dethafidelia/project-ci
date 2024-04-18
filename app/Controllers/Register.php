@@ -2,30 +2,40 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
 use App\Models\UserModel;
 
-class Register extends Controller
+class Register extends BaseController
 {
     public function index()
     {
         return view('formDPPH');
     }
 
-    // public function store()
-    // {
-    //     $model = new UserModel();
+    public function getAllUser()
+    {
+        $model = new UserModel();
+        $data = $model->findAll();
+        echo json_encode($data);
+    }
 
-    //     $data = [
-    //         'nama_lengkap' => $this->request->getPost(['nama_lengkap']),
-    //         'nama_bidang' => $this->request->getPost('nama_bidang'),
-    //         'nama_timpel' => $this->request->getPost('nama_timpel'),
-    //         'username' => $this->request->getPost('username'),
-    //         'password' => $this->request->getPost('password'),
-    //     ];
+    public function submit()
+    {
+        // Ambil data yang dikirimkan dari formulir
+        $data = [
+            'NAMA_LENGKAP' => $this->request->getPost('nama_lengkap'),
+            'NAMA_BIDANG' => $this->request->getPost('nama_bidang'),
+            'NAMA_TIMPEL' => $this->request->getPost('nama_timpel'),
+            'USERNAME' => $this->request->getPost('username'),
+            'PASSWORD' => $this->request->getPost('password'),
+        ];
 
-    //     $model->saveUser($data);
+        // Buat instansi model
+        $model = new UserModel();
 
-    //     return redirect()->to('/register');
-    // }
+        // Panggil metode tambah dari model untuk menyimpan data ke database
+        $model->tambah($data);
+
+        // Redirect kembali ke halaman agenda setelah data tersimpan
+        return redirect()->to(base_url('dpph'));
+    }
 }

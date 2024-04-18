@@ -17,7 +17,7 @@
         <a href="<?= base_url('agenda') ?>" class="btn btn-info" role="button" aria-pressed="true" style="float:right">kembali</a>
         <h1>Form Programasi</h1>
 
-        <form action="<?php echo base_url(''); ?>" method="post">
+        <form action="<?php echo base_url('agenda/submit'); ?>" method="post">
             <div class="form-group row mb-3">
                 <label for="bidang" class="col-sm-2 col-form-label">Bidang:</label>
                 <div class="col-sm-10">

@@ -50,6 +50,8 @@ use App\Controllers\Agenda;
 
 $routes->get('agenda', 'Agenda::index');
 $routes->get('agenda/getAllAgenda', 'Agenda::getAllAgenda');
+$routes->post('agenda/submit', 'Agenda::submit'); // Rute untuk menangani pengiriman formulir
+
 
 use App\Controllers\Monev;
 
@@ -87,6 +89,11 @@ $routes->get('programasi', 'Programasi::index');
 use App\Controllers\tambahDPPH;
 
 $routes->get('tambah', 'tambahDPPH::index');
+
+use App\Controllers\Register;
+
+$routes->get('register/getAllUser', 'Register::getAllUser');
+$routes->post('register/submit', 'Register::submit'); // Rute untuk menangani pengiriman formulir
 
 
 /*

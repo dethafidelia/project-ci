@@ -70,6 +70,17 @@
                     html += '<tr>';
                     html += '<td>' + order++ + '</td>';
                     html += '<td>' + data[i]['BIDANG'] + '</td>';
+                    html += '<td>' + data[i]['SASARAN_STRATEGIS'] + '</td>';
+                    html += '<td>' + data[i]['INDIKATOR'] + '</td>';
+                    html += '<td>' + data[i]['TARGET'] + '</td>';
+                    html += '<td>' + data[i]['ASUMSI'] + '</td>';
+                    html += '<td>' + data[i]['RESIKO'] + '</td>';
+                    html += '<td>' + data[i]['KEGIATAN_UTAMA'] + '</td>';
+                    html += '<td>' + data[i]['WAKTU'] + '</td>';
+                    html += '<td>' + data[i]['TOTAL_BIAYA'] + '</td>';
+                    html += '<td>' + data[i]['DETAIL_DETAIL'] + '</td>';
+                    html += '<td>' + data[i]['PENANGGUNG_JAWAB'] + '</td>';
+                    html += '<td>' + data[i]['KETERANGAN'] + '</td>';
                     html += '</tr>';
                 }
                 $("tbody").html(html);
@@ -77,7 +88,7 @@
         })
     })
 </script>
-<script>
+<!-- <script>
     $(document).ready(function() {
         // Fetch bidang options on page load
         $.ajax({
@@ -131,4 +142,4 @@
     });
 </script>
 
-</html>
+</html> -->
