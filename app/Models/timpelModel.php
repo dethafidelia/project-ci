@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class timpelModel extends Model
+class TimpelModel extends Model
 {
     protected $table = 'tim_pelayanan';
     protected $allowedFields = ['*',]; // Allow all columns for simplicity (adjust as needed)

@@ -23,11 +23,8 @@
                 </select>
             </div>
         </div>
+        <a href="<?= base_url('agenda') ?>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cari</a>
     </form>
-    <div class="d-flex justify-content-end mb-2">
-        <a href="<?= base_url('agenda') ?>" class="btn btn-primary mr-2">Cari</a>
-        <a href="<?= base_url('programasi') ?>" class="btn btn-primary">Tambah Data</a>
-    </div>
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">

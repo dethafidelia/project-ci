@@ -55,10 +55,6 @@ use App\Controllers\Monev;
 
 $routes->get('monev', 'Monev::index');
 
-use App\Controllers\About;
-
-$routes->get('about', 'About::index');
-
 use App\Controllers\HomeAdmin;
 
 $routes->get('homeAdmin', 'HomeAdmin::index');
@@ -67,10 +63,32 @@ use App\Controllers\DPPH;
 
 $routes->get('dpph', 'DPPH::index');
 
+use App\Controllers\HomeSBR;
+
+$routes->get('homeSBR', 'HomeSBR::index');
+
+use App\Controllers\AgendaSBR;
+
+$routes->get('agendaSBR', 'AgendaSBR::index');
+
+use App\Controllers\MonevSBR;
+
+$routes->get('monevSBR', 'MonevSBR::index');
+
 use App\Controllers\Bidang;
 
 $routes->get('bidang', 'Bidang::index');
-$routes->get('bidang/get-tim-pelayanan/(:num)', 'Bidang::getTimPelayananByBidang/$1');
+$routes->post('bidang/get_tim_pelayanan', 'Bidang::getTimPelayananByBidang');
+
+use App\Controllers\Programasi;
+
+$routes->get('programasi', 'Programasi::index');
+
+use App\Controllers\tambahDPPH;
+
+$routes->get('tambah', 'tambahDPPH::index');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

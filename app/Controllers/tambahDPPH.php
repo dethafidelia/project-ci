@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-class DPPH extends BaseController
+class tambahDPPH extends BaseController
 {
     public function index()
     {
         return view('gereja/admin')
-            . view('gereja/AnggotaDPPH');
+            . view('gereja/formDPPH');
     }
 }

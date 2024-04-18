@@ -22,20 +22,21 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd" ;>
         <div class="container-fluid">
             <div class="d-flex container-fluid">
                 <div class="flex-grow-1">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('home') ?>">HOME</a>
+                            <a class="nav-link" href="<?= base_url('homeSBR') ?>">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('agenda') ?>">PROGRAMASI</a>
+                            <a class="nav-link" href="<?= base_url('agendaSBR') ?>">PROGRAMASI</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= base_url('monev') ?>">MONEV</a>
                         </li>
+
                     </ul>
                 </div>
                 <div class="ms-auto" id="navbarNav">

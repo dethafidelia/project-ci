@@ -12,9 +12,9 @@
 
 <body>
     <div class="container mt-4">
-        <h1 class="fs-5">Formulir Pendaftaran</h1>
+        <h1 class="fs-5">Formulir Pendaftaran Anggota DPPH</h1>
         <p class="fs-6">Silahkan isi formulir di bawah ini untuk mendaftar.</p>
-        <form action="register/store" method="post" class="border p-3">
+        <form action="" method="post" class="border p-3">
             <div class="form-group row mb-3">
                 <label for="nama_lengkap" class="col-sm-2 col-form-label font-weight-bold">Nama Lengkap</label>
                 <div class="col-sm-10">
@@ -27,6 +27,7 @@
                 <div class="col-sm-10">
                     <select name="bidang" id="bidang" class="form-control" required>
                         <option value="">Pilih Bidang</option>
+
                     </select>
                 </div>
             </div>
@@ -34,7 +35,7 @@
             <div class="form-group row mb-3">
                 <label for="timpel" class="col-sm-2 col-form-label font-weight-bold">Tim Pelayanan</label>
                 <div class="col-sm-10">
-                    <select name="timpel" id="timpel" class="form-control" disabled>
+                    <select name="timpel" id="timpel" class="form-control">
                         <option value="">Pilih Tim Pelayanan</option>
                     </select>
                 </div>
@@ -55,8 +56,16 @@
             </div>
 
             <div class="form-group row mb-3">
+                <label for="proposal" class="col-sm-2 col-form-label">Upload Proposal</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control-file" id="proposal">
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
                 <div class="col-sm-10 offset-sm-2">
                     <button type="submit" class="btn btn-success">Simpan</button>
+                    <a href="<?= base_url('dpph') ?>" class="btn btn-info" role="button" aria-pressed="true" style="float:right">kembali</a>
                 </div>
             </div>
         </form>
@@ -64,54 +73,23 @@
 
     <script>
         $(document).ready(function() {
-            // Fetch bidang options on page load
-            $.ajax({
-                url: "<?php echo base_url('bidang/get_all_bidang'); ?>",
-                dataType: 'json',
-                success: function(data) {
-                    $('#bidang').append($('<option>', {
-                        value: '',
-                        text: 'Pilih Bidang'
-                    }));
-                    $.each(data, function(key, value) {
-                        $('#bidang').append($('<option>', {
-                            value: value.id_bidang,
-                            text: value.nama_bidang
-                        }));
-                    });
-                }
-            });
-
-            // Update Tim Pelayanan dropdown based on selected Bidang
             $('#bidang').change(function() {
-                var bidangId = $(this).val();
-                if (bidangId) {
-                    $.ajax({
-                        url: "<?php echo base_url('bidang/get_tim_pelayanan'); ?>",
-                        data: {
-                            id_bidang: bidangId
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#timpel').empty(); // Clear existing options
-                            $('#timpel').append($('<option>', {
-                                value: '',
-                                text: 'Pilih Tim Pelayanan'
-                            }));
-                            $.each(data, function(key, value) {
-                                $('#timpel').append($('<option>', {
-                                    value: value.id_tim_pelayanan,
-                                    text: value.nama_tim_pelayanan
-                                }));
-                            });
-
-                            $('#timpel').prop('disabled', false); // Enable Tim Pelayanan dropdown
-                        }
-                    });
-                } else {
-                    $('#timpel').empty(); // Clear existing options
-                    $('#timpel').prop('disabled', true); // Disable Tim Pelayanan dropdown
-                }
+                var id_bidang = $(this).val();
+                $.ajax({
+                    url: "<?php echo base_url(); ?>bidang/get_tim_pelayanan",
+                    method: "POST",
+                    data: {
+                        id_bidang: id_bidang
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        $('#timpel').html('');
+                        $.each(data, function(key, value) {
+                            $('#timpel').append('<option value="' + value.id_tim_pelayanan + '">' + value.nama_tim_pelayanan + '</option>');
+                        });
+                    }
+                });
             });
         });
     </script>
+</body>

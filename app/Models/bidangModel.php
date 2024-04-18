@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class bidangModel extends Model
+class BidangModel extends Model
 {
     protected $table = 'bidang';
     protected $allowedFields = ['*',]; // Allow all columns for simplicity (adjust as needed)

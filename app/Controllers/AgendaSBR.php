@@ -4,18 +4,12 @@ namespace App\Controllers;
 
 use App\Models\AgendaModel;
 
-class Agenda extends BaseController
+class AgendaSBR extends BaseController
 {
     public function index()
     {
-        return view('gereja/header')
-            . view('gereja/AGENDA');
-    }
-
-    public function Agendasbr()
-    {
-        return view('gereja/headerSBR')
-            . view('gereja/AGENDAsbr');
+        return view('gereja/SBR')
+            . view('gereja/agendaSBR');
     }
 
     public function getAllAgenda()

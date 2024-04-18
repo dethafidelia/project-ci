@@ -3,45 +3,40 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
-use App\Models\bidangModel;
-use App\Models\timpelModel;
+use App\Models\BidangModel; // Ubah import
+use App\Models\TimpelModel; // Ubah import
 
 class Bidang extends Controller
 {
     public function index()
     {
-        // Get all bidang data
         $bidangModel = new BidangModel();
         $bidangData = $bidangModel->get_all_bidang();
 
-        // Prepare data for view
         $data = [
-            'title' => 'Daftar Bidang',
+            'title' => 'Formulir Pendaftaran',
             'bidang' => $bidangData
         ];
 
-        // Load the bidang view and pass the data
-        echo view('bidang/index', $data);
+        echo view('gereja/formDPPH', $data);
     }
 
     public function getTimPelayananByBidang($bidangId)
     {
-        // Validate bidangId
         if (!is_numeric($bidangId) || $bidangId < 1) {
             return json_encode(['error' => 'Invalid bidang ID']);
         }
 
-        // Get tim pelayanan data for the specified bidang
-        $timPelayananModel = new timpelModel();
-        $timPelayananData = $timPelayananModel->get_tim_pelayanan_by_bidang($bidangId);
+        $timPelayananModel = new TimpelModel();
+        $timPelayananData = $timPelayananModel->etTimPelayananByBidang($bidangId);
 
-        // Prepare response data
         $response = [
             'success' => true,
             'tim_pelayanan' => $timPelayananData
         ];
 
-        // Return JSON response
-        echo json_encode($response);
+        var_dump($response); // Debugging
+
+        return json_encode($response);
     }
 }
