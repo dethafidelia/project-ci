@@ -1,4 +1,4 @@
-<?php
+<?php //BELUM BERHASIL
 
 namespace App\Controllers;
 
@@ -19,6 +19,18 @@ class Bidang extends Controller
         ];
 
         echo view('gereja/formDPPH', $data);
+
+        // Buat instansi model
+        $model = new BidangModel();
+
+        // Ambil data bidang dari model
+        $data['bidang'] = $model->getBidang();
+
+        // Tampilkan hasil var_dump atau print_r
+        print_r($data['bidang']);
+
+        // Tampilkan view dengan data bidang
+        return view('formDPPH', $data);
     }
 
     public function getTimPelayananByBidang($bidangId)

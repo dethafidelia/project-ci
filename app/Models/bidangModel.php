@@ -1,4 +1,4 @@
-<?php
+<?php //BELUM BERHASIL
 
 namespace App\Models;
 
@@ -6,13 +6,12 @@ use CodeIgniter\Model;
 
 class BidangModel extends Model
 {
-    protected $table = 'bidang';
-    protected $allowedFields = ['*',]; // Allow all columns for simplicity (adjust as needed)
+    protected $table = 'bidang'; // Sesuaikan dengan nama tabel Anda
+    protected $primaryKey = 'id_bidang';
 
-    // You can add additional methods specific to bidang here
-    // For example, a method to get all bidang:
-    public function get_all_bidang()
+
+    public function getBidang()
     {
-        return $this->get()->getResultArray();
+        return $this->select('nama_bidang')->findAll();
     }
 }

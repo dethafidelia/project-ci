@@ -56,6 +56,7 @@ $routes->post('agenda/submit', 'Agenda::submit'); // Rute untuk menangani pengir
 use App\Controllers\Monev;
 
 $routes->get('monev', 'Monev::index');
+$routes->get('monev/getAllMonev', 'Monev::getAllMonev');
 
 use App\Controllers\HomeAdmin;
 
@@ -80,7 +81,6 @@ $routes->get('monevSBR', 'MonevSBR::index');
 use App\Controllers\Bidang;
 
 $routes->get('bidang', 'Bidang::index');
-$routes->post('bidang/get_tim_pelayanan', 'Bidang::getTimPelayananByBidang');
 
 use App\Controllers\Programasi;
 

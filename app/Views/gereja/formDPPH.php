@@ -22,15 +22,19 @@
                 </div>
             </div>
 
-            <div class="form-group row mb-3">
-                <label for="bidang" class="col-sm-2 col-form-label font-weight-bold">Bidang</label>
-                <div class="col-sm-10">
-                    <select name="bidang" id="bidang" class="form-control" required>
-                        <option value="">Pilih Bidang</option>
 
-                    </select>
-                </div>
+            <div class="mb-3">
+                <label for="bidang" class="form-label">Bidang:</label>
+                <select class="form-select" id="bidang" name="bidang">
+                    <option selected disabled>Pilih Bidang</option>
+                    <?php if (isset($bidang) && is_array($bidang)) : ?>
+                        <?php foreach ($bidang as $row) : ?>
+                            <option value="<?= $row['id_bidang']; ?>"><?= $row['nama_bidang']; ?></option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </select>
             </div>
+
 
             <div class="form-group row mb-3">
                 <label for="timpel" class="col-sm-2 col-form-label font-weight-bold">Tim Pelayanan</label>
@@ -71,25 +75,7 @@
         </form>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $('#bidang').change(function() {
-                var id_bidang = $(this).val();
-                $.ajax({
-                    url: "<?php echo base_url(); ?>bidang/get_tim_pelayanan",
-                    method: "POST",
-                    data: {
-                        id_bidang: id_bidang
-                    },
-                    dataType: "json",
-                    success: function(data) {
-                        $('#timpel').html('');
-                        $.each(data, function(key, value) {
-                            $('#timpel').append('<option value="' + value.id_tim_pelayanan + '">' + value.nama_tim_pelayanan + '</option>');
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
