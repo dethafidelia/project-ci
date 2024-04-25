@@ -101,10 +101,6 @@ use App\Controllers\Register;
 
 $routes->get('register/getAllUser', 'Register::getAllUser');
 $routes->post('register/submit', 'Register::submit'); // Rute untuk menangani pengiriman formulir
-use App\Controllers\dropdown;
-
-$routes->get('dropdown', 'dropdown::index'); // Menampilkan form dropdown
-$routes->post('dropdown/getTimpel/(:num)', 'dropdown::getTimpel/$1'); // Menangani request AJAX untuk mengambil kota berdasarkan provinsi
 
 /*
  * --------------------------------------------------------------------

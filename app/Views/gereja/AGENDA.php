@@ -1,22 +1,3 @@
-<script>
-    $(document).ready(function() {
-        $('#bidang').change(function() {
-            var $idBidang = $(this).val();
-            $.ajax({
-                url: "<?= base_url('dropdown/getTimpel') ?>/" + idBidang,
-                method: 'POST',
-                dataType: 'json',
-                success: function(data) {
-                    $('#timpel').empty();
-                    $.each(data, function(i, kota) {
-                        $('#timpel').append('<option value="' + timpel.id_tim_pelayanan + '">' + timpel.id_tim_pelayanan + '</option>');
-                    });
-                }
-            });
-        });
-    });
-</script>
-
 <div class="container">
     <form>
         <div class="row">
@@ -85,7 +66,7 @@
 
 </body>
 
-<!-- <script>
+<script>
     $(document).ready(function() {
         $.ajax({
             url: "<?php echo base_url('agenda/getAllAgenda'); ?>",
@@ -154,7 +135,7 @@
         });
 
     });
-</script> -->
+</script>
 
 
 
