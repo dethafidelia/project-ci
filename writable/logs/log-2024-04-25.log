@@ -4,3 +4,78 @@ INFO - 2024-04-25 06:43:29 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2024-04-25 06:43:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-04-25 06:44:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-04-25 06:44:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-04-25 07:26:33 --> Undefined variable $data
+in APPPATH\Controllers\Bidang.php on line 54.
+ 1 APPPATH\Controllers\Bidang.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'D:\\detha\\project-kp\\app\\Controllers\\Bidang.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Bidang->getAllTimPelayanan()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Bidang))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\detha\\project-kp\\public\\index.php')
+CRITICAL - 2024-04-25 07:26:45 --> Undefined variable $data
+in APPPATH\Controllers\Bidang.php on line 54.
+ 1 APPPATH\Controllers\Bidang.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'D:\\detha\\project-kp\\app\\Controllers\\Bidang.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Bidang->getAllTimPelayanan()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Bidang))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\detha\\project-kp\\public\\index.php')
+CRITICAL - 2024-04-25 07:27:45 --> Undefined variable $data
+in APPPATH\Controllers\Bidang.php on line 54.
+ 1 APPPATH\Controllers\Bidang.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'D:\\detha\\project-kp\\app\\Controllers\\Bidang.php', 54)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Bidang->getAllTimPelayanan()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Bidang))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\detha\\project-kp\\public\\index.php')
+CRITICAL - 2024-04-25 07:57:25 --> Call to undefined method App\Models\TimpelModel::getAllTimPelayanan
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Bidang.php(50): CodeIgniter\Model->__call('getAllTimPelayanan', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Bidang->getAllTimPelayanan()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Bidang))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\detha\\project-kp\\public\\index.php')
+INFO - 2024-04-25 08:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-25 08:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-25 08:06:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-25 08:06:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-04-25 08:06:40 --> mysqli_sql_exception: Unknown column 'idBidang' in 'where clause' in D:\detha\project-kp\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\detha\project-kp\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 D:\detha\project-kp\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\detha\project-kp\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\detha\project-kp\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\detha\project-kp\system\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\detha\project-kp\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\detha\project-kp\app\Controllers\Bidang.php(52): CodeIgniter\BaseModel->findAll()
+#7 D:\detha\project-kp\system\CodeIgniter.php(934): App\Controllers\Bidang->getAllTimPelayanan()
+#8 D:\detha\project-kp\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Bidang))
+#9 D:\detha\project-kp\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\detha\project-kp\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 D:\detha\project-kp\system\Commands\Server\rewrite.php(47): require_once('D:\\detha\\projec...')
+#12 {main}
+CRITICAL - 2024-04-25 08:06:40 --> Unknown column 'idBidang' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *
+FROM `tim_pelayanan`
+WHERE `idBidang` = \'Bidang Pelayanan Liturgi dan Peribadatan\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `tim_pelayanan`
+WHERE `idBidang` = \'Bidang Pelayanan Liturgi dan Peribadatan\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `tim_pelayanan`
+WHERE `idBidang` = \'Bidang Pelayanan Liturgi dan Peribadatan\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tim_pelayanan`
+WHERE `idBidang` = :idBidang:', [...], false)
+ 5 SYSTEMPATH\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Bidang.php(52): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Bidang->getAllTimPelayanan()
+ 9 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Bidang))
+10 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\detha\\project-kp\\public\\index.php')
+INFO - 2024-04-25 08:33:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-25 08:33:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

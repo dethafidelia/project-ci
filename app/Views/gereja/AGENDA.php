@@ -12,24 +12,14 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="bidang">Bidang</label>
-                <select class="form-select" id="bidang" name="bidang">
-                    <!-- <option selected disabled>Pilih Bidang</option> -->
-                    <?php if (isset($bidang)) : ?>
-                        <?php foreach ($bidang as $row) : ?>
-                            <option value="<?= $row['nama_bidang']; ?>"><?= $row['nama_bidang']; ?></option>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                <select name="bidang" id="bidang" class="form-control" required>
+                    <!-- <option value="">Pilih Bidang</option> -->
                 </select>
             </div>
             <div class="col-md-4 form-group">
-                <label for="bidang">Tim Pelayanan</label>
+                <label for="timpel">Tim Pelayanan</label>
                 <select name="timpel" id="timpel" class="form-control">
-                    <!-- <option value="">Pilih Tim Pelayanan</option> -->
-                    <?php if (isset($timPelayananData)) : ?>
-                        <?php foreach ($timPelayananData as $row) : ?>
-                            <option value="<?= $row['nama_tim_pelayanan']; ?>"><?= $row['nama_tim_pelayanan']; ?></option>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                    <option value="">Pilih Tim Pelayanan</option>
                 </select>
             </div>
         </div>
@@ -55,6 +45,7 @@
                     <th>DETAIL BIAYA</th>
                     <th>PENANGGUNG JAWAB</th>
                     <th>KETERANGAN</th>
+                    <th>LPJ</th>
                 </tr>
             </thead>
             <tbody id="tbody">
@@ -122,21 +113,39 @@
                 });
             }
         });
-        // Mendapatkan elemen dropdown
-        var dropdown = document.getElementById('myDropdown');
 
-        // Menambahkan event listener untuk 'change' event
-        dropdown.addEventListener('change', function() {
-            // Mendapatkan nilai dari pilihan yang dipilih
-            var selectedValue = dropdown.value;
+        // Update Tim Pelayanan dropdown based on selected Bidang
+        $('#bidang').change(function() {
+            var bidangId = $(this).val();
+            if (bidangId) {
+                $.ajax({
+                    url: "<?php echo base_url('timpel/getAllTimPelayanan'); ?>",
+                    data: {
+                        idBidang: bidangId
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#timpel').empty(); // Clear existing options
+                        $('#timpel').append($('<option>', {
+                            value: '',
+                            text: 'Pilih Tim Pelayanan'
+                        }));
+                        $.each(data, function(key, value) {
+                            $('#timpel').append($('<option>', {
+                                value: value.id_tim_pelayanan,
+                                text: value.nama_tim_pelayanan
+                            }));
+                        });
 
-            getAllTimPelayanan(selectedValue);
-
+                        $('#timpel').prop('enable', false); // Enable Tim Pelayanan dropdown
+                    }
+                });
+            } else {
+                $('#timpel').empty(); // Clear existing options
+                $('#timpel').prop('enable', true); // Disable Tim Pelayanan dropdown
+            }
         });
-
     });
 </script>
-
-
 
 </html>

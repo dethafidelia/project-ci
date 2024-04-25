@@ -13,18 +13,20 @@
             <div class="col-md-4 form-group">
                 <label for="bidang">Bidang</label>
                 <select name="bidang" id="bidang" class="form-control" required>
-                    <option value="">Pilih Bidang</option>
+                    <!-- <option value="">Pilih Bidang</option> -->
                 </select>
             </div>
             <div class="col-md-4 form-group">
-                <label for="bidang">Tim Pelayanan</label>
+                <label for="timpel">Tim Pelayanan</label>
                 <select name="timpel" id="timpel" class="form-control">
                     <option value="">Pilih Tim Pelayanan</option>
                 </select>
             </div>
         </div>
-        <a href="<?= base_url('agendaSBR') ?>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cari</a>
     </form>
+    <div class="d-flex justify-content-end mb-2">
+        <a href="<?= base_url('agenda') ?>" class="btn btn-primary mr-2">Cari</a>
+    </div>
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
@@ -42,6 +44,7 @@
                     <th>DETAIL BIAYA</th>
                     <th>PENANGGUNG JAWAB</th>
                     <th>KETERANGAN</th>
+                    <th>LPJ</th>
                 </tr>
             </thead>
             <tbody id="tbody">
@@ -56,14 +59,17 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-            url: "<?php echo base_url('agendaSBR/getAllAgenda'); ?>",
+            url: "<?php echo base_url('agenda/getAllAgenda'); ?>",
             method: "GET",
             dataType: "JSON",
             async: false,
             success: function(data) {
+
                 var order = 1;
                 var html;
+                console.log(data);
                 for (var i = 0; i < data.length; i++) {
+
                     html += '<tr>';
                     html += '<td>' + order++ + '</td>';
                     html += '<td>' + data[i]['BIDANG'] + '</td>';
@@ -78,6 +84,7 @@
                     html += '<td>' + data[i]['DETAIL_DETAIL'] + '</td>';
                     html += '<td>' + data[i]['PENANGGUNG_JAWAB'] + '</td>';
                     html += '<td>' + data[i]['KETERANGAN'] + '</td>';
+                    html += '<td>' + data[i]['LPJ'] + '</td>';
                     html += '</tr>';
                 }
                 $("tbody").html(html);
@@ -89,16 +96,17 @@
     $(document).ready(function() {
         // Fetch bidang options on page load
         $.ajax({
-            url: "<?php echo base_url('bidang/get_all_bidang'); ?>",
+            url: "<?php echo base_url('bidang/getAllBidang'); ?>",
             dataType: 'json',
             success: function(data) {
+                console.log(data);
                 $('#bidang').append($('<option>', {
                     value: '',
                     text: 'Pilih Bidang'
                 }));
                 $.each(data, function(key, value) {
                     $('#bidang').append($('<option>', {
-                        value: value.id_bidang,
+                        value: value.nama_bidang,
                         text: value.nama_bidang
                     }));
                 });
@@ -110,9 +118,9 @@
             var bidangId = $(this).val();
             if (bidangId) {
                 $.ajax({
-                    url: "<?php echo base_url('bidang/get_tim_pelayanan'); ?>",
+                    url: "<?php echo base_url('timpel/getAllTimPelayanan'); ?>",
                     data: {
-                        id_bidang: bidangId
+                        idBidang: bidangId
                     },
                     dataType: 'json',
                     success: function(data) {

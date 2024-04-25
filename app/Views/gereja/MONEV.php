@@ -13,11 +13,11 @@
             <div class="col-md-4 form-group">
                 <label for="bidang">Bidang</label>
                 <select name="bidang" id="bidang" class="form-control" required>
-                    <option value="">Pilih Bidang</option>
+                    <!-- <option value="">Pilih Bidang</option> -->
                 </select>
             </div>
             <div class="col-md-4 form-group">
-                <label for="bidang">Tim Pelayanan</label>
+                <label for="timpel">Tim Pelayanan</label>
                 <select name="timpel" id="timpel" class="form-control">
                     <option value="">Pilih Tim Pelayanan</option>
                 </select>
@@ -87,20 +87,21 @@
         })
     })
 </script>
-<!-- <script>
+<script>
     $(document).ready(function() {
         // Fetch bidang options on page load
         $.ajax({
-            url: "<?php echo base_url('bidang/get_all_bidang'); ?>",
+            url: "<?php echo base_url('bidang/getAllBidang'); ?>",
             dataType: 'json',
             success: function(data) {
+                console.log(data);
                 $('#bidang').append($('<option>', {
                     value: '',
                     text: 'Pilih Bidang'
                 }));
                 $.each(data, function(key, value) {
                     $('#bidang').append($('<option>', {
-                        value: value.id_bidang,
+                        value: value.nama_bidang,
                         text: value.nama_bidang
                     }));
                 });
@@ -112,9 +113,9 @@
             var bidangId = $(this).val();
             if (bidangId) {
                 $.ajax({
-                    url: "<?php echo base_url('bidang/get_tim_pelayanan'); ?>",
+                    url: "<?php echo base_url('timpel/getAllTimPelayanan'); ?>",
                     data: {
-                        id_bidang: bidangId
+                        idBidang: bidangId
                     },
                     dataType: 'json',
                     success: function(data) {
@@ -141,4 +142,4 @@
     });
 </script>
 
-</html> -->
+</html>

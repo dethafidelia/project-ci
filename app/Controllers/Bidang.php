@@ -40,17 +40,18 @@ class Bidang extends Controller
         echo json_encode($data);
     }
 
-    public function getAllTimPelayanan()
-    {
-        $idBidang = $this->request->getGet('selectedValue'); //ambil nilai yang dikirim dari ajax
+    // public function getAllTimPelayanan()
+    // {
+    //     $idBidang = $this->request->getGet('id_bidang');
 
-        // Proses mendapatkan data kategori berdasarkan selectedValue
-        // Contoh: mengambil data dari database
-        $model = new TimpelModel(); //Sesuaikan dengan model kakak
-        $categories = $model->getAllTimPelayanan($idBidang);
+    //     $model = new TimpelModel();
 
-        // Pastikan data kategori diubah ke format yang tepat
-        // dan kirim sebagai response JSON
-        return $this->response->setJSON($idBidang);
-    }
+    //     $model->where('id_bidang', $idBidang);
+
+    //     // Ambil data
+    //     $data = $model->findAll();
+
+    //     // Kembalikan data dalam format JSON
+    //     return $this->response->setJSON($data);
+    // }
 }

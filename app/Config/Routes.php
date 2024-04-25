@@ -87,7 +87,11 @@ use App\Controllers\Bidang;
 
 $routes->get('bidang', 'Bidang::ind ex');
 $routes->get('bidang/getAllBidang', 'Bidang::getAllBidang');
-$routes->get('timpel/getAllTimPelayanan', 'Bidang::getAllTimPelayanan');
+
+use App\Controllers\Timpel;
+
+$routes->get('timpel/getAllTimPelayanan', 'Timpel::getAllTimPelayanan');
+// $routes->get('timpel/getAllTimPelayanan', 'Bidang::getAllTimPelayanan');
 
 use App\Controllers\Programasi;
 
