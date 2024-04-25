@@ -23,16 +23,13 @@
             </div>
 
 
-            <div class="mb-3">
-                <label for="bidang" class="form-label">Bidang:</label>
-                <select class="form-select" id="bidang" name="bidang">
-                    <option selected disabled>Pilih Bidang</option>
-                    <?php if (isset($bidang)) : ?>
-                        <?php foreach ($bidang as $row) : ?>
-                            <option value="<?= $row['nama_bidang']; ?>"><?= $row['nama_bidang']; ?></option>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </select>
+            <div class="form-group row mb-3">
+                <label for="bidang" class="col-sm-2 col-form-label font-weight-bold">Bidang</label>
+                <div class="col-sm-10">
+                    <select name="bidang" id="bidang" class="form-control">
+                        <!-- <option value="">Pilih Bidang</option> -->
+                    </select>
+                </div>
             </div>
 
 
@@ -82,22 +79,52 @@
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
-                    // $('#bidang').append($('<option>', {
-                    //     value: '',
-                    //     text: 'Pilih Bidang'
-                    // }));
+                    $('#bidang').append($('<option>', {
+                        value: '',
+                        text: 'Pilih Bidang'
+                    }));
                     $.each(data, function(key, value) {
                         $('#bidang').append($('<option>', {
-                            value: value.id_bidang,
+                            value: value.nama_bidang,
                             text: value.nama_bidang
                         }));
                     });
                 }
             });
+
+            // Update Tim Pelayanan dropdown based on selected Bidang
+            $('#bidang').change(function() {
+                var bidangId = $(this).val();
+                if (bidangId) {
+                    $.ajax({
+                        url: "<?php echo base_url('timpel/getAllTimPelayanan'); ?>",
+                        data: {
+                            idBidang: bidangId
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#timpel').empty(); // Clear existing options
+                            $('#timpel').append($('<option>', {
+                                value: '',
+                                text: 'Pilih Tim Pelayanan'
+                            }));
+                            $.each(data, function(key, value) {
+                                $('#timpel').append($('<option>', {
+                                    value: value.id_tim_pelayanan,
+                                    text: value.nama_tim_pelayanan
+                                }));
+                            });
+
+                            $('#timpel').prop('enable', false); // Enable Tim Pelayanan dropdown
+                        }
+                    });
+                } else {
+                    $('#timpel').empty(); // Clear existing options
+                    $('#timpel').prop('enable', true); // Disable Tim Pelayanan dropdown
+                }
+            });
         });
     </script>
-    <!-- <script>console.log(<? //php echo json_encode($bidang);
-                                ?>);</script> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

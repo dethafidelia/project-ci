@@ -10,6 +10,7 @@ class Agenda extends BaseController
     {
 
         return view('gereja/header')
+            . view('gereja/dropdown')
             . view('gereja/AGENDA');
     }
 

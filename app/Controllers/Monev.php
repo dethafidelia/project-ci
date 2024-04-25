@@ -9,6 +9,7 @@ class Monev extends BaseController
     public function index()
     {
         return view('gereja/header')
+            . view('gereja/dropdown')
             . view('gereja/MONEV');
     }
 

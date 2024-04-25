@@ -40,18 +40,18 @@ class Bidang extends Controller
         echo json_encode($data);
     }
 
-    // public function getAllTimPelayanan()
-    // {
-    //     $idBidang = $this->request->getGet('id_bidang');
+    public function getAllTimPelayanan()
+    {
+        $idBidang = $this->request->getGet('id_bidang');
 
-    //     $model = new TimpelModel();
+        $model = new TimpelModel();
 
-    //     $model->where('id_bidang', $idBidang);
+        $model->where('id_bidang', $idBidang);
 
-    //     // Ambil data
-    //     $data = $model->findAll();
+        // Ambil data
+        $data = $model->findAll();
 
-    //     // Kembalikan data dalam format JSON
-    //     return $this->response->setJSON($data);
-    // }
+        // Kembalikan data dalam format JSON
+        return $this->response->setJSON($data);
+    }
 }

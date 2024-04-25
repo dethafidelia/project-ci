@@ -83,14 +83,21 @@ use App\Controllers\MonevSBR;
 $routes->get('monevSBR', 'MonevSBR::index');
 $routes->get('monevSBR/getAllMonev', 'MonevSBR::getAllMonev');
 
-use App\Controllers\Bidang;
+use App\Controllers\BidangController;
 
-$routes->get('bidang', 'Bidang::ind ex');
-$routes->get('bidang/getAllBidang', 'Bidang::getAllBidang');
+// $routes->get('bidang', 'Bidang::index');
+// $routes->get('bidang/getAllBidang', 'Bidang::getAllBidang');
+$routes->get('bidang', 'BidangController::index');
+$routes->get('bidang/getAllBidang', 'BidangController::getAllBidang');
+$routes->get('bidang/getTimPelayananByBidang/(:num)', 'BidangController::getTimPelayananByBidang/$1');
 
-use App\Controllers\Timpel;
+use App\Controllers\TimpelController;
 
-$routes->get('timpel/getAllTimPelayanan', 'Timpel::getAllTimPelayanan');
+$routes->get('timpel/getAllTimPelayanan', 'TimpelController::getAllTimPelayanan');
+
+
+
+// $routes->get('timpel/getAllTimPelayanan', 'Timpel::getAllTimPelayanan');
 // $routes->get('timpel/getAllTimPelayanan', 'Bidang::getAllTimPelayanan');
 
 use App\Controllers\Programasi;

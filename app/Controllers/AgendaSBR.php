@@ -9,6 +9,7 @@ class AgendaSBR extends BaseController
     public function index()
     {
         return view('gereja/SBR')
+            . view('gereja/dropdown')
             . view('gereja/agendaSBR');
     }
 
