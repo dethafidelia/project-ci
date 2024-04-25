@@ -23,7 +23,7 @@
                 </select>
             </div>
         </div>
-        <a href="<?= base_url('agenda') ?>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cari</a>
+        <a href="<?= base_url('agendaSBR') ?>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cari</a>
     </form>
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
@@ -56,7 +56,7 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-            url: "<?php echo base_url('agenda/getAllAgenda'); ?>",
+            url: "<?php echo base_url('agendaSBR/getAllAgenda'); ?>",
             method: "GET",
             dataType: "JSON",
             async: false,
@@ -67,6 +67,17 @@
                     html += '<tr>';
                     html += '<td>' + order++ + '</td>';
                     html += '<td>' + data[i]['BIDANG'] + '</td>';
+                    html += '<td>' + data[i]['SASARAN_STRATEGIS'] + '</td>';
+                    html += '<td>' + data[i]['INDIKATOR'] + '</td>';
+                    html += '<td>' + data[i]['TARGET'] + '</td>';
+                    html += '<td>' + data[i]['ASUMSI'] + '</td>';
+                    html += '<td>' + data[i]['RESIKO'] + '</td>';
+                    html += '<td>' + data[i]['KEGIATAN_UTAMA'] + '</td>';
+                    html += '<td>' + data[i]['WAKTU'] + '</td>';
+                    html += '<td>' + data[i]['TOTAL_BIAYA'] + '</td>';
+                    html += '<td>' + data[i]['DETAIL_DETAIL'] + '</td>';
+                    html += '<td>' + data[i]['PENANGGUNG_JAWAB'] + '</td>';
+                    html += '<td>' + data[i]['KETERANGAN'] + '</td>';
                     html += '</tr>';
                 }
                 $("tbody").html(html);

@@ -5,13 +5,15 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\BidangModel; // Ubah import
 use App\Models\TimpelModel; // Ubah import
+use App\Models\bidangM; // Ubah import
+use App\Models\TimpelM; // Ubah import
 
 class Bidang extends Controller
 {
     public function index()
     {
         $bidangModel = new BidangModel();
-        $bidangData = $bidangModel->get_all_bidang();
+        $bidangData = $bidangModel->getAllBidang();
 
         $data = [
             'title' => 'Formulir Pendaftaran',
@@ -24,7 +26,7 @@ class Bidang extends Controller
         $model = new BidangModel();
 
         // Ambil data bidang dari model
-        $data['bidang'] = $model->getBidang();
+        $data['bidang'] = $model->getAllBidang();
 
         // Tampilkan hasil var_dump atau print_r
         print_r($data['bidang']);
@@ -33,22 +35,32 @@ class Bidang extends Controller
         return view('formDPPH', $data);
     }
 
-    public function getTimPelayananByBidang($bidangId)
+    public function getAllBidang()
     {
-        if (!is_numeric($bidangId) || $bidangId < 1) {
-            return json_encode(['error' => 'Invalid bidang ID']);
-        }
+        $model = new BidangModel();
+        $data = $model->findAll();
+        echo json_encode($data);
+    }
 
-        $timPelayananModel = new TimpelModel();
-        $timPelayananData = $timPelayananModel->etTimPelayananByBidang($bidangId);
+    // public function getAllTimPelayanan()
+    // {
+    //     $idBidang = $this->request->getGet('selectedValue'); //ambil nilai yang dikirim dari ajax
 
-        $response = [
-            'success' => true,
-            'tim_pelayanan' => $timPelayananData
-        ];
+    //     // Proses mendapatkan data kategori berdasarkan selectedValue
+    //     // Contoh: mengambil data dari database
+    //     $model = new TimpelModel(); //Sesuaikan dengan model kakak
+    //     $categories = $model->getAllTimPelayanan($idBidang);
 
-        var_dump($response); // Debugging
+    //     // Pastikan data kategori diubah ke format yang tepat
+    //     // dan kirim sebagai response JSON
+    //     return $this->response->setJSON($idBidang);
+    // }
 
-        return json_encode($response);
+    public function getTimpel($idBidang)
+    {
+        $bidangModel = new BidangModel();
+        $timpel = $bidangModel->getTimpel($idBidang);
+
+        echo json_encode($timpel);
     }
 }

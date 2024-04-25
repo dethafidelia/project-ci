@@ -27,9 +27,9 @@
                 <label for="bidang" class="form-label">Bidang:</label>
                 <select class="form-select" id="bidang" name="bidang">
                     <option selected disabled>Pilih Bidang</option>
-                    <?php if (isset($bidang) && is_array($bidang)) : ?>
+                    <?php if (isset($bidang)) : ?>
                         <?php foreach ($bidang as $row) : ?>
-                            <option value="<?= $row['id_bidang']; ?>"><?= $row['nama_bidang']; ?></option>
+                            <option value="<?= $row['nama_bidang']; ?>"><?= $row['nama_bidang']; ?></option>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </select>
@@ -74,6 +74,30 @@
             </div>
         </form>
     </div>
+    <script>
+        $(document).ready(function() {
+            // Fetch bidang options on page load
+            $.ajax({
+                url: "<?php echo base_url('bidang/getAllBidang'); ?>",
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    // $('#bidang').append($('<option>', {
+                    //     value: '',
+                    //     text: 'Pilih Bidang'
+                    // }));
+                    $.each(data, function(key, value) {
+                        $('#bidang').append($('<option>', {
+                            value: value.id_bidang,
+                            text: value.nama_bidang
+                        }));
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- <script>console.log(<? //php echo json_encode($bidang);
+                                ?>);</script> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

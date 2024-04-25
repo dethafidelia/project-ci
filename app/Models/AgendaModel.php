@@ -11,7 +11,7 @@ class AgendaModel extends Model
     protected $allowedFields = [
         'BIDANG', 'SASARAN_STRATEGIS', 'INDIKATOR', 'TARGET',
         'ASUMSI', 'RESIKO', 'KEGIATAN_UTAMA', 'WAKTU', 'TOTAL_BIAYA',
-        'DETAIL_BIAYA', 'PENANGGUNG_JAWAB', 'KETERANGAN'
+        'DETAIL_BIAYA', 'PENANGGUNG_JAWAB', 'KETERANGAN', 'LPJ'
     ];
 
     public function tambah($data)
@@ -28,7 +28,8 @@ class AgendaModel extends Model
             'TOTAL_BIAYA' => $data['TOTAL_BIAYA'],
             'DETAIL_BIAYA' => $data['DETAIL_BIAYA'],
             'PENANGGUNG_JAWAB' => $data['PENANGGUNG_JAWAB'],
-            'KETERANGAN' => $data['KETERANGAN']
+            'KETERANGAN' => $data['KETERANGAN'],
+            'LPJ' => $data['LPJ']
         ]);
     }
 }

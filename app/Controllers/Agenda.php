@@ -8,6 +8,7 @@ class Agenda extends BaseController
 {
     public function index()
     {
+
         return view('gereja/header')
             . view('gereja/AGENDA');
     }
@@ -22,6 +23,30 @@ class Agenda extends BaseController
     // Metode untuk menangani pengiriman formulir
     public function submit()
     {
+
+
+        // Dapatkan file yang diunggah menggunakan request object
+        $lpjdok = $this->request->getFile('lpj');
+
+        // Inisialisasi URL foto
+        $dok_url = "";
+
+        if ($lpjdok->isValid() && !$lpjdok->hasMoved()) {
+            // Generate nama file baru
+
+            $namaBaru = $lpjdok->getRandomName();
+            $lokasiFolder = ROOTPATH . 'lpj/';
+
+            $lpjdok->move(
+                $lokasiFolder,
+                $namaBaru
+            );
+
+            // Setel URL foto
+            $dok_url = base_url('proyek-kp/lpj/' . $namaBaru);
+        }
+
+
         // Ambil data yang dikirimkan dari formulir
         $data = [
             'BIDANG' => $this->request->getPost('bidang'),
@@ -35,7 +60,9 @@ class Agenda extends BaseController
             'TOTAL_BIAYA' => $this->request->getPost('total_biaya'),
             'DETAIL_BIAYA' => $this->request->getPost('detail_biaya'),
             'PENANGGUNG_JAWAB' => $this->request->getPost('penanggung_jawab'),
-            'KETERANGAN' => $this->request->getPost('keterangan')
+            'KETERANGAN' => $this->request->getPost('keterangan'),
+            'LPJ' => $dok_url
+
         ];
 
         // Buat instansi model

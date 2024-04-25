@@ -39,8 +39,8 @@
                     html += '<td>' + data[i]['NAMA_LENGKAP'] + '</td>';
                     html += '<td>' + data[i]['NAMA_BIDANG'] + '</td>';
                     html += '<td>' + data[i]['NAMA_TIMPEL'] + '</td>';
-                    html += '<td>' + data[i]['USERNAME'] + '</td>';
-                    html += '<td>' + data[i]['PASSWORD'] + '</td>';
+                    html += '<td>' + data[i]['PROPOSAL'] + '</td>';
+                    html += '<td>' + data[i]['EDIT'] + '</td>';
                     html += '</tr>';
                 }
                 $("tbody").html(html);

@@ -10,8 +10,9 @@ class BidangModel extends Model
     protected $primaryKey = 'id_bidang';
 
 
-    public function getBidang()
+    public function getAllBidang()
     {
         return $this->select('nama_bidang')->findAll();
     }
+
 }

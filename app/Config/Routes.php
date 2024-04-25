@@ -53,6 +53,9 @@ $routes->get('agenda/getAllAgenda', 'Agenda::getAllAgenda');
 $routes->post('agenda/submit', 'Agenda::submit'); // Rute untuk menangani pengiriman formulir
 
 
+// $routes->get('proyek-kp/lpj/(:segment)', 'LpjController::showFile/$1');
+
+
 use App\Controllers\Monev;
 
 $routes->get('monev', 'Monev::index');
@@ -73,14 +76,18 @@ $routes->get('homeSBR', 'HomeSBR::index');
 use App\Controllers\AgendaSBR;
 
 $routes->get('agendaSBR', 'AgendaSBR::index');
+$routes->get('agendaSBR/getAllAgenda', 'AgendaSBR::getAllAgenda');
 
 use App\Controllers\MonevSBR;
 
 $routes->get('monevSBR', 'MonevSBR::index');
+$routes->get('monevSBR/getAllMonev', 'MonevSBR::getAllMonev');
 
 use App\Controllers\Bidang;
 
-$routes->get('bidang', 'Bidang::index');
+$routes->get('bidang', 'Bidang::ind ex');
+$routes->get('bidang/getAllBidang', 'Bidang::getAllBidang');
+$routes->get('timpel/getAllTimPelayanan', 'Bidang::getAllTimPelayanan');
 
 use App\Controllers\Programasi;
 
@@ -94,7 +101,10 @@ use App\Controllers\Register;
 
 $routes->get('register/getAllUser', 'Register::getAllUser');
 $routes->post('register/submit', 'Register::submit'); // Rute untuk menangani pengiriman formulir
+use App\Controllers\dropdown;
 
+$routes->get('dropdown', 'dropdown::index'); // Menampilkan form dropdown
+$routes->post('dropdown/getTimpel/(:num)', 'dropdown::getTimpel/$1'); // Menangani request AJAX untuk mengambil kota berdasarkan provinsi
 
 /*
  * --------------------------------------------------------------------
